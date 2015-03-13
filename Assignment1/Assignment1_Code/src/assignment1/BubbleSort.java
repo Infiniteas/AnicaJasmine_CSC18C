@@ -11,7 +11,7 @@ package assignment1;
  */
 public class BubbleSort extends BaseSort {
     
-    int opEquals, opAddition, opLogic, opSubtraction;
+    int opEquals, opAddition, opLogic;
     int[] bubbleArray;
 
     public BubbleSort(int size) {
@@ -34,13 +34,12 @@ public class BubbleSort extends BaseSort {
         opEquals++;
             for(int j = 1; j < compare1; j++){
             opLogic += 2;
-            opAddition++; 
-            opSubtraction++;
+            opAddition += 2;
                 if(bubbleArray[j - 1] > bubbleArray[j]){
                     temp = bubbleArray[j - 1];
                     bubbleArray[j - 1] = bubbleArray[j];
                     bubbleArray[j] = temp;
-                    opSubtraction += 2;
+                    opAddition += 2;
                     opEquals += 3;
                 }
             }
@@ -56,9 +55,7 @@ public class BubbleSort extends BaseSort {
         System.out.println("nEquals  = " + opEquals);
         System.out.println("nAdd  = " + opAddition);
         System.out.println("nLog  = " + opLogic);
-        System.out.println("nSubtraction  = " + opSubtraction);
-        System.out.println("Total  = " + (opEquals + opAddition + opLogic 
-                + opSubtraction));
+        System.out.println("Total  = " + (opEquals + opAddition + opLogic));
     }
     
 }

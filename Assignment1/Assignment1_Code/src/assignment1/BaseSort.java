@@ -24,7 +24,7 @@ public class BaseSort extends AbstractSort {
        //to call random numbers with bounds: rand.nextInt(upperbound-lowerbound)
        //                                                   + lowerbound;
        Random rand = new Random();
-       int upperBound = 99;
+       int upperBound = 400;
        int lowerBound = 10;
        //this loop fills the array with random numbers
        for (int i = 0; i < array.length; i++) {
