@@ -1,4 +1,9 @@
-
+/*
+ * File: Project 1
+ * Programmer: Jasmine Anica
+ * Class: CSC 18C
+ * Date: 5/20/15
+ */
 package project1;
 
 import java.io.BufferedReader;
@@ -24,7 +29,9 @@ public class Levels {
     private Vector easyLevelsIndex = new Vector();
     private Vector hardLevelsIndex = new Vector();
     
-    //loads the levels into hashmaps
+    /**
+     * Constructor: loads the levels
+     */
     Levels(){
         
         try {
@@ -42,6 +49,12 @@ public class Levels {
         
     }
     
+    /**
+     * This method will open the Easy_Levels text file and store the levels as 
+     * strings to a Hashmap. The keys are hashed and stored to a Vector.
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
     private void loadEasyLevels() throws FileNotFoundException, IOException{
         
         // Open the file
@@ -66,6 +79,13 @@ public class Levels {
         br.close();
     }
     
+    /**
+     * This method will open the Hard_Levels text file and store the levels as 
+     * strings to a Hashmap. The keys are hashed and stored to a Vector.
+     * 
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
     private void loadHardLevels() throws FileNotFoundException, IOException{
         
         // Open the file
@@ -90,6 +110,13 @@ public class Levels {
         br.close();
     }
     
+    /**
+     * This method is used to create a unique index for the keys in the Hashmaps
+     * that store the levels
+     * 
+     * @param puzzle - a string with the order of colors
+     * @return Integer - the key to a Hashmap
+     */
     private Integer hashing(String puzzle){
 
         double index = 0;
@@ -107,16 +134,32 @@ public class Levels {
 
     }
     
+    /**
+     * This method will return an easy level
+     * 
+     * @return String
+     */
     public String getEasyLevel(){
         
         return easyLevels.get(getEasyLevelIndex());
     }
     
+    /**
+     * This method will return an hard level
+     * 
+     * @return String
+     */
     public String getHardLevel(){
         
         return hardLevels.get(getHardLevelIndex());
     }
     
+    /**
+     * This method will choose a random index to pick in the Vector and return
+     * the key value
+     * 
+     * @return Integer
+     */
     private Integer getEasyLevelIndex(){
          
         Random rand = new Random();
@@ -130,7 +173,13 @@ public class Levels {
         
         return index;
     }
-    
+
+    /**
+     * This method will choose a random index to pick in the Vector and return
+     * the key value
+     * 
+     * @return Integer
+     */
     private Integer getHardLevelIndex(){
          
         Random rand = new Random();

@@ -1,8 +1,8 @@
 /*
- * File: Assignment4_DoublyLinkedList_Generic
+ * File: Project 1
  * Programmer: Jasmine Anica
  * Class: CSC 18C
- * Date: 4/17/15
+ * Date: 5/20/15
  */
 package project1;
 
@@ -11,13 +11,9 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JLabel;
+
 
 /**
  *
@@ -55,7 +51,7 @@ public class Game_JFrame extends javax.swing.JFrame {
                 boardColList.insertNewLink(i+(j-1), 'G');
             }
         }
-              
+    
     }
 
     /**
@@ -339,6 +335,13 @@ public class Game_JFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * This method is called when help mode JButton is clicked. It calls the
+     * function used to display or hide the JLabels containing the number of
+     * blues and whites in each row and column.
+     * 
+     * @param evt 
+     */
     private void helpModeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpModeButtonMouseClicked
    
         if (helpModeButton.getBackground() == Color.WHITE){
@@ -353,6 +356,13 @@ public class Game_JFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_helpModeButtonMouseClicked
 
+/**
+ * When easy JButton is clicked, it will close the current JLayeredPane and display 
+ * the game JLayeredPane. This also includes generating a new table for the board and
+ * setting up the JLabels and JButtons.
+ * 
+ * @param evt 
+ */
     private void easyButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_easyButtonMouseClicked
         // TODO add your handling code here:
         
@@ -376,9 +386,15 @@ public class Game_JFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_easyButtonMouseClicked
 
+    /**
+     * When hard JButton is clicked, this method will will close the current
+     * JLayeredPane and display the game JLayeredPane. This also includes 
+     * generating a new table for the board and setting up the JLabels and JButtons.
+     * 
+     * @param evt 
+     */
     private void hardButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hardButtonMouseClicked
-        // TODO add your handling code here:
-        
+
         boardList.clearList();
         
         String hardLvl = levels.getHardLevel();
@@ -398,53 +414,32 @@ public class Game_JFrame extends javax.swing.JFrame {
         game.setVisible(true);
     }//GEN-LAST:event_hardButtonMouseClicked
 
+    /**
+     * This method will close the program when done JButton is clicked.
+     * 
+     * @param evt 
+     */
     private void doneButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_doneButtonMouseClicked
-        // TODO add your handling code here:
-        System.exit(0);
+    System.exit(0);
     }//GEN-LAST:event_doneButtonMouseClicked
 
+/**
+ * When another JButton is clicked, the game will start the startScreen 
+ * JLayeredPane to restart at the beginning.
+ * 
+ * @param evt 
+ */
     private void anotherButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_anotherButtonMouseClicked
         // TODO add your handling code here:
         solved.setVisible(false);
         startScreen.setVisible(true);
     }//GEN-LAST:event_anotherButtonMouseClicked
 
-    /**
-     * @param args the command line arguments
+       /**
+     * This method will change the boardColList DoublyLinkedList corresponding 
+     * to the boardList DoublyLinkedList within this class.
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Game_JFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Game_JFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Game_JFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Game_JFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Game_JFrame().setVisible(true);
-            }
-        });
-    }
-    
-    private void updateBoardColList(){
+    public void updateBoardColList(){
         
         Link current = boardList.headLink;
         
@@ -464,13 +459,17 @@ public class Game_JFrame extends javax.swing.JFrame {
     }
     
 
-    
-    private boolean check3InARow(){
+    /**
+     * This method will check that the squares in each row or column do not
+     * have three of the same colors in a row. It will return true if there is no
+     * three in a row found. It will return false if there is a three in a row found.
+     * 
+     * @return boolean
+     */
+    public boolean check3InARow(){
         
         Link current = boardList.headLink;
         Integer number;
-        
-        Character chars = 'b';
         
         
         while(current.next.next != null){
@@ -525,27 +524,16 @@ public class Game_JFrame extends javax.swing.JFrame {
         
     }
     
-    private void setFrozen(){
-        
-        for (int i = 0; i < a; i++){
-            for (int j = 0; j < a; j++){
-                if(boardList.findCharacter(i + 1, j + 1) == 'b'){
-                    buttons[i][j].setBackground(blue);
-                    buttons[i][j].setFont(font0);
-                    buttons[i][j].setForeground(Color.WHITE);
-                    buttons[i][j].setText("X");
-                } else if(boardList.findCharacter(i + 1, j + 1) == 'w'){
-                    buttons[i][j].setBackground(Color.WHITE);
-                    buttons[i][j].setFont(font0);
-                    buttons[i][j].setForeground(blue);
-                    buttons[i][j].setText("X");
-                }
-            }
-        }
-                        
-    }
+
     
-    private boolean checkAnswer(){
+    /**
+     * This method will return true if the board has the same amount of whites 
+     * and blues in each row and column. It will return false if there is a three
+     * in a row detected.
+     * 
+     * @return boolean
+     */
+    public boolean checkAnswer(){
         
         for(int i = 0; i < 12; i++){
             
@@ -569,6 +557,110 @@ public class Game_JFrame extends javax.swing.JFrame {
         return true;
     }
     
+    
+    
+    /**
+     * This method will count the numbers of blues and whites in each column
+     * by searching through the boardList DoublyLinkedList and save the 
+     * information to rowsBW Vector.
+     */    
+    public void countBWInRows(){
+        
+        Link current = boardList.headLink;
+        //boardList.printLinkedListColor(6);
+        
+        int counter = 1;
+        int blues = 0;
+        int whites = 0;
+        
+        while(current != null){
+            
+            if (current.getCharacter() == 'B' || current.getCharacter() == 'b'){
+                blues++;
+            } else if (current.getCharacter() == 'W' || current.getCharacter() == 'w'){
+                whites++;
+            }
+            
+            if (counter % 6 == 0){
+                rowsBW.add(blues);
+                rowsBW.add(whites);
+                blues = 0;
+                whites = 0;
+            }
+            
+            current = current.next;
+            counter++;
+        }
+        
+        //rowsBW.print(6);
+    }
+    
+    /**
+     * This method will count the numbers of blues and whites in each column
+     * by searching through the boardColList DoublyLinkedList and save the 
+     * information to colsBW Vector.
+     */    
+    public void countBWInCols(){
+        Link current = boardColList.headLink;
+        //boardColList.printLinkedListCol(6);
+        
+        int counter = 1;
+        int blues = 0;
+        int whites = 0;
+        
+        while(current != null){
+            
+            if (current.getCharacter() == 'B' || current.getCharacter() == 'b'){
+                blues++;
+            } else if (current.getCharacter() == 'W' || current.getCharacter() == 'w'){
+                whites++;
+     
+            }
+            
+            if (counter % 6 == 0){
+                colsBW.add(blues);
+                colsBW.add(whites);
+                blues = 0;
+                whites = 0;
+            }
+            
+            current = current.next;
+            counter++;
+        }
+        
+        //colsBW.print(6);
+    }
+
+    /**
+     * This method will search through the boardList DoublyLinkedList to locate 
+     * a character 'b' or a 'w'. If it finds either, the button will have a mark
+     * 'x' to show the player the button is fixed (cannot be changed) to the board.
+     */
+    private void setFrozen(){
+        
+        for (int i = 0; i < a; i++){
+            for (int j = 0; j < a; j++){
+                if(boardList.findCharacter(i + 1, j + 1) == 'b'){
+                    buttons[i][j].setBackground(blue);
+                    buttons[i][j].setFont(font0);
+                    buttons[i][j].setForeground(Color.WHITE);
+                    buttons[i][j].setText("X");
+                } else if(boardList.findCharacter(i + 1, j + 1) == 'w'){
+                    buttons[i][j].setBackground(Color.WHITE);
+                    buttons[i][j].setFont(font0);
+                    buttons[i][j].setForeground(blue);
+                    buttons[i][j].setText("X");
+                }
+            }
+        }
+                        
+    }
+   
+    
+    /**
+     * This method will open solved JLayeredPane to show the player they have 
+     * successfully solved the puzzle.
+     */
     private void finished(){
         if(checkAnswer() && check3InARow()){
             game.setVisible(false);
@@ -578,7 +670,10 @@ public class Game_JFrame extends javax.swing.JFrame {
         }
     }
     
-    
+    /**
+     * This method displays the number of blues and whites in each row using
+     * JLabels.
+     */
     private void setRowNumberLabels(){
         countBWInRows();
         
@@ -611,6 +706,10 @@ public class Game_JFrame extends javax.swing.JFrame {
         
     }
     
+    /**
+     * This method displays the number of blues and whites in each column using
+     * JLabels.
+     */
     private void setColNumberLabels(){
         countBWInCols();
         
@@ -644,6 +743,10 @@ public class Game_JFrame extends javax.swing.JFrame {
         
     }
     
+    /**
+     * This method sets all the labels displaying the number of blues and whites
+     * in each row and column invisible to the player.
+     */
     private void setRowColLabelInvisible(){
         
         row1Label.setVisible(false);
@@ -662,6 +765,10 @@ public class Game_JFrame extends javax.swing.JFrame {
                
     }
     
+    /**
+     * This method sets all the labels displaying the number of blues and whites
+     * in each row and column visible to the player.
+     */
     private void setRowColLabelVisible(){
         
         row1Label.setVisible(true);
@@ -680,70 +787,11 @@ public class Game_JFrame extends javax.swing.JFrame {
                
     }
     
-    private void countBWInRows(){
-        
-        Link current = boardList.headLink;
-        //boardList.printLinkedListColor(6);
-        
-        int counter = 1;
-        int blues = 0;
-        int whites = 0;
-        
-        while(current != null){
-            
-            if (current.getCharacter() == 'B' || current.getCharacter() == 'b'){
-                blues++;
-            } else if (current.getCharacter() == 'W' || current.getCharacter() == 'w'){
-                whites++;
-            }
-            
-            if (counter % 6 == 0){
-                rowsBW.add(blues);
-                rowsBW.add(whites);
-                blues = 0;
-                whites = 0;
-            }
-            
-            current = current.next;
-            counter++;
-        }
-        
-        //rowsBW.print(6);
-    }
     
-    
-    private void countBWInCols(){
-        Link current = boardColList.headLink;
-        //boardColList.printLinkedListCol(6);
-        
-        int counter = 1;
-        int blues = 0;
-        int whites = 0;
-        
-        while(current != null){
-            
-            if (current.getCharacter() == 'B' || current.getCharacter() == 'b'){
-                blues++;
-            } else if (current.getCharacter() == 'W' || current.getCharacter() == 'w'){
-                whites++;
-     
-            }
-            
-            if (counter % 6 == 0){
-                colsBW.add(blues);
-                colsBW.add(whites);
-                blues = 0;
-                whites = 0;
-            }
-            
-            current = current.next;
-            counter++;
-        }
-        
-        //colsBW.print(6);
-    }
-    
-    //creates a button table
+    /**
+     * This method will create a GridLayout of buttons and initialize their 
+     * appearance and add them to board JLayeredPane.
+     */
     private void ButtonTable() {
         
         board.removeAll();
@@ -775,12 +823,50 @@ public class Game_JFrame extends javax.swing.JFrame {
             }
         }
     }
+   
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Game_JFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Game_JFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Game_JFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Game_JFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Game_JFrame().setVisible(true);
+            }
+        });
+    }
     
     
     
-    
-    //PLAYER FIRE 
-    //create an action listener class the button table
+    /**
+     * This method will check which button in the button table was clicked and 
+     * check which corresponding character in the boardList the button shared to
+     * change the color of the button. Then it will call the functions to check
+     * the player has solved the puzzle.
+     */
     public class ButtonListener implements ActionListener {  
         
         @Override
@@ -791,7 +877,7 @@ public class Game_JFrame extends javax.swing.JFrame {
                 for (int j = 0; j < a; j++){
                     if (e.getSource() == buttons[i][j]){ //gameButtons[i][j] was clicked
                         if(boardList.findCharacter(i + 1, j + 1) != 'b' ||
-                                boardList.findCharacter(i + 1, j + 1) == 'w'){
+                                boardList.findCharacter(i + 1, j + 1) != 'w'){
                             
                             //compares to boardList and changes color
                             if (boardList.findCharacter(i + 1, j + 1) == 'W'){

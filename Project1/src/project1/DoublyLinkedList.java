@@ -1,8 +1,8 @@
 /*
- * File: Assignment4_DoublyLinkedList_Generic
+ * File: Project 1
  * Programmer: Jasmine Anica
  * Class: CSC 18C
- * Date: 4/17/15
+ * Date: 5/20/15
  */
 package project1;
 
@@ -23,17 +23,22 @@ public class DoublyLinkedList {
         headLink = null;
     }
     
-    //Checks for null
+    /**
+     * This method checks if LinkedList is empty or filled
+     * 
+     * @return boolean
+     */
     public boolean isLinkedListEmpty() {
         return newestLink == null || headLink == null;
     }
     
     
-    /**
-     * This method adds a Link from the front of the List by passing in an index
-     * 
-     * @param index 
-     */
+   /**
+    * This method adds a Link from the front of the List 
+    * 
+    * @param index Integer of newLink
+    * @param color Character of newLink
+    */
     public void insertHeadLink(Integer index , Character color) {
         
         //Ex: add 3 to front of
@@ -63,7 +68,9 @@ public class DoublyLinkedList {
     /**
      * This method adds a Link to the List from the end by passing
      * in an index to add
-     * @param index 
+     * 
+     * @param index Integer of newLink
+     * @param color Character of newLink
      */
     public void insertNewLink(Integer index , Character color){
         
@@ -89,10 +96,11 @@ public class DoublyLinkedList {
     
     
    
-    /*
+    /**
      * This method deletes the head (very first) Link of list
      * 
-    */
+     * @return Link - headLink
+     */
     public Link deleteHeadLink(){
         
         // Example:
@@ -116,10 +124,11 @@ public class DoublyLinkedList {
         return headLink;
     }
     
-    /*
-     * This method deletes the newestLink added(or in other terms the last link
+    /**
+     * This method deletes the newestLink added(or in other terms: the last Link
      * added) to the LinkedList.
-     * @return 
+     * 
+     * @return Link - newestLink
      */
     public Link deleteNewestLink() {
  
@@ -144,6 +153,9 @@ public class DoublyLinkedList {
         return newestLink;
     }
     
+    /**
+     * This method empties the DoublyLinkedList
+     */
     public void clearList(){
         newestLink = null;
         headLink = null;
@@ -152,10 +164,11 @@ public class DoublyLinkedList {
     /**
      * This method inserts an index after indexInLink
      * 
-     * ex: insertAfter(3,7) = inserts 3 after 7;
+     * ex: insertAfter(3,7) = inserts 3 after 7
      * 
-     * @param index
-     * @param indexInLinkedList
+     * @param index Integer to add to Link to add to DoublyLinkedList
+     * @param indexInLinkedList value of existent Integer in DoublyLinkedList
+     * @param color - Character of Link in given index of DoublyLinekdList
      * @return boolean
      */
     public boolean insertAfter(Integer index, Integer indexInLinkedList , Character color){
@@ -212,11 +225,12 @@ public class DoublyLinkedList {
     /**
      *
      * This function lets the user change the letter in the board
-     * by using the parameters(row, column, character)
+     * by selecting the row and column and then replacing the current color with
+     * the color passed in.
      * 
-     * @param row
-     * @param column
-     * @param color
+     * @param row value of the row in List
+     * @param column value of column in List
+     * @param color Character of Link
      */
     public void changeColor(Integer row, Integer column, Character color){
         
@@ -250,6 +264,14 @@ public class DoublyLinkedList {
         
     }
     
+    /**
+     * This method return the character corresponding to the position of row and
+     * column in a 6x6 board.
+     * 
+     * @param row value of row in DoublyLinkedList
+     * @param column value of column DoublyLinkedList
+     * @return Character - color of Link
+     */
     public Character findCharacter(Integer row, Integer column){
         int index = 1;
         
@@ -283,7 +305,8 @@ public class DoublyLinkedList {
     /**
      * This method deletes a link in LinkedList by passing in desired index.
      * 
-     * @param index 
+     * @param index Integer in Link to be deleted
+     * @return boolean
      */
     public boolean deleteLink(Integer index){
         
@@ -315,7 +338,12 @@ public class DoublyLinkedList {
         return true;
     }
     
-    //this will print from the first index added
+    /**
+     * This method will print from the first index added and check how many per
+     * line to display by passing in an int value.
+     * 
+     * @param perLine number of displays in a row
+     */
     public void printLinkedListIndex(int perLine) {   
         
          //starts from the headLink 
@@ -337,7 +365,12 @@ public class DoublyLinkedList {
         }
     }
     
-        //this will print from the first index added
+    /**
+    * This method will print the characters from beginning and check how many per
+    * line to display by passing in an int value.
+    * 
+    * @param perLine number of displays in a row
+    */
     public void printLinkedListColor(int perLine) {   
         
          //starts from the headLink 
@@ -359,7 +392,12 @@ public class DoublyLinkedList {
         }
     }
 
-        //this will print from the first index added
+    /**
+     * This method will print the DoublyLinkedList in order of a board rotated 
+     * to the right
+     * 
+     * @param perLine number of displays in a row
+     */
     public void printLinkedListCol(int perLine) {   
         
          //starts from the headLink 
@@ -381,7 +419,9 @@ public class DoublyLinkedList {
         }
     }
     
-    //this will print from the most recently added index
+    /**
+     * This method will print from the most recently added index
+     */
     public void printLinkedListInReverseOrder() {
 
         //starts from the newestLink added to the Link List
